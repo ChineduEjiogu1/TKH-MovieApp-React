@@ -1,5 +1,5 @@
 import React from 'react'
-import { img_300 } from "../../config/config";
+import { img_300, unavailable } from "../../config/config";
 import "./display_content.css"
 import Badge from '@mui/material/Badge';
 import ContentModal from '../Modal/modal';
