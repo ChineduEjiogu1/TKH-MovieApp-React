@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+// import { useState } from 'react'
+// import reactLogo from './assets/react.svg'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header/header';
@@ -7,9 +7,9 @@ import SimpleBottomNavigation from './components/navbar';
 import Container from '@mui/material/Container';
 import Trending from './Pages/Trending/trending';
 import Movies from './Pages/Movies/movies';
-import Series from './Pages/Series/Series';
+import Series from './Pages/Series/series';
 import Search from './Pages/Search/search'
-import { Box } from '@mui/material';
+
 
 function App() {
   

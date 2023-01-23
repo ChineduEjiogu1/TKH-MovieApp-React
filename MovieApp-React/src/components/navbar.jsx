@@ -23,9 +23,9 @@ export default function SimpleBottomNavigation() {
   }, [value]);
 
   return (
-    <Box sx={{ width: "100%"}}>
+    // <Box sx={{ width: "100%"}}>
       <BottomNavigation
-        style={{backgroundColor: "#2d313a" , position: "fixed", bottom: 0, backgroundColor: "#2d313a", zIndex: 100}}
+        style={{backgroundColor: "#2d313a" , position: "fixed", bottom: 0, zIndex: 100, width: "100%"}}
         showLabels
         value={value}
         onChange={(event, newValue) => {
@@ -57,6 +57,6 @@ export default function SimpleBottomNavigation() {
         />
 
       </BottomNavigation>
-    </Box>
+    // </Box>
   );
 }
