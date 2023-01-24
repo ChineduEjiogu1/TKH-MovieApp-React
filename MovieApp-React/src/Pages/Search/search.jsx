@@ -20,15 +20,16 @@ const Search = () => {
   const [numOfPages, setNumOfPages] = useState();
 
   const darkTheme = createTheme({
-    palette: {
-      mode: 'dark',
-      primary: {
-        main: "#fff",
+      palette: {
+        mode: 'dark',
+        primary:{
+          main: '#000',
+          contrastText: '#fff',
+        } 
       },
-    },
   });
-
-  const fetchSearch = async () => {
+ 
+  const getSearch = async () => {
     const { data } = await axios.get(`https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${API_KEY}&language=en-US&query=${searchInput}&page=${page}&include_adult=false`);
 
     setOutput(data.results);
@@ -37,7 +38,7 @@ const Search = () => {
 
   useEffect(() => {
     window.scroll(0,0);
-    fetchSearch();
+    getSearch();
 }, [type, page]);
 
   return (
@@ -52,7 +53,7 @@ const Search = () => {
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <Button variant="contained" style={{marginLeft: 10}}
-        onClick={fetchSearch}
+        onClick={getSearch}
         > 
           <SearchIcon/> 
         </Button>
@@ -83,11 +84,11 @@ const Search = () => {
                             title={c.title || c.name} 
                             date={c.first_air_date || 
                             c.release_date}
-                        media_type="movie" 
+                        media_type={type ? "tv" : "movie"}
                         vote_average={c.vote_average}/>
                         ))
                     }
-                    {searchInput && !output && (type ? <h2>No Series Found</h2> : <h2>No Movies Found</h2>)}
+                    {searchInput && !output && (type ? <h2 style={{color: "black"}}>No Series Found</h2> : <h2 style={{color: "black"}}>No Movies Found</h2>)}
             </div>
             {numOfPages > 1 && (
                 <Pagination setPage={setPage} numOfPages={numOfPages}/>

@@ -1,7 +1,7 @@
  import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header/header';
-import SimpleBottomNavigation from './components/navbar';
+import SimpleBottomNavigation from './components/navbar-nav';
 import Container from '@mui/material/Container';
 import Trending from './Pages/Trending/trending';
 import Movies from './Pages/Movies/movies';

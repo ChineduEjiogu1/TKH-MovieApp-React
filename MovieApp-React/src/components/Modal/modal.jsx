@@ -9,9 +9,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Carousel from "../Carousel/carousel";
 import {
-  img_500,
-  unavailable,
-  unavailableLandscape,
+  IMG_500,
+  unavailablePoster,
+  unavailablePoster2,
 } from "../../config/config";
 import "./modal.css";
 
@@ -25,20 +25,20 @@ const style = {
   justifyContent: "center",
   width: "90%",
   height: "80%",
-  backgroundColor: "#39445a",
+  backgroundColor: "#680a00",
   border: "1px solid #282c34",
   color: "white",
   padding: theme.spacing(1, 1, 3),
 };
 
-export default function ContentModal({ children, media_type, id }) {
+export default function PosterModal({ children, media_type, id }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [content, setContent] = useState();
   const [video, setVideo] = useState();
 
-  const fetchData = async () => {
+  const getData = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/${media_type}/${id}?api_key=${API_KEY}&language=en-US`
     );
@@ -47,7 +47,7 @@ export default function ContentModal({ children, media_type, id }) {
     console.log(data);
   };
 
-  const fetchVideo = async () => {
+  const getVideo = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${API_KEY}&language=en-US`
     );
@@ -57,8 +57,8 @@ export default function ContentModal({ children, media_type, id }) {
   };
 
   useEffect(() => {
-    fetchData();
-    fetchVideo();
+    getData();
+    getVideo();
   }, []);
 
   return (
@@ -79,7 +79,7 @@ export default function ContentModal({ children, media_type, id }) {
         closeAfterTransition
       >
         <Fade in={open}>
-          <Box sx={{backgroundColor: "#39445a"}}>
+          <Box sx={{ backgroundColor: "#680a00" }}>
           <div className={style}>
             {content && (
               <div className={style}>
@@ -90,8 +90,8 @@ export default function ContentModal({ children, media_type, id }) {
                     height="600px"
                     src={
                       content.poster_path
-                        ? `${img_500}/${content.poster_path}`
-                        : unavailable
+                        ? `${IMG_500}/${content.poster_path}`
+                        : unavailablePoster
                     }
                     alt={content.name || content.title}
                   />
@@ -100,8 +100,8 @@ export default function ContentModal({ children, media_type, id }) {
                     className="content-land"
                     src={
                       content.backdrop_path
-                        ? `${img_500}/${content.backdrop_path}`
-                        : unavailableLandscape
+                        ? `${IMG_500}/${content.backdrop_path}`
+                        : unavailablePoster2
                     }
                     alt={content.name || content.title}
                   />

@@ -15,10 +15,10 @@ const Series = () => {
   const [numOfPages, setNumOfPages] = useState(); 
   const [selectedGenres, setSelectedGenres] = useState([]); 
   const [genres, setGenres] = useState([]);
-  const genreURL = UseGenre(selectedGenres);
+  const genre = UseGenre(selectedGenres);
 
-  const fetchTv = async () => {
-      const { data } = await axios.get(`https://api.themoviedb.org/3/discover/tv/?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}`);
+  const getTvSeries = async () => {
+      const { data } = await axios.get(`https://api.themoviedb.org/3/discover/tv/?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genre}`);
   
       setContent(data.results);
       setNumOfPages(data.total_pages);
@@ -28,8 +28,8 @@ const Series = () => {
 
 
   useEffect(() => {
-      fetchTv();
-  }, [page, genreURL]);
+    getTvSeries();
+  }, [page, genre]);
 
   return (
     <div>
@@ -53,8 +53,8 @@ const Series = () => {
                 title={c.title || c.name} 
                 date={c.first_air_date || 
                 c.release_date}
-            media_type="tv" 
-            vote_average={c.vote_average}/>
+                media_type="tv" 
+                vote_average={c.vote_average}/>
             ))
         }
       </div>

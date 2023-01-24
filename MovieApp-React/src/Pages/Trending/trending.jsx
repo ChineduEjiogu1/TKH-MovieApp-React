@@ -10,18 +10,18 @@ const API_KEY = import.meta.env.VITE_APP_MOVIE_API_KEY;
 const Trending = () => {
     
     const [page, setPage] = useState(1);
-    const [content, setContent] = useState([]);
+    const [content, setOutput] = useState([]);
 
-    const fetchTrending = async () =>
+    const getTrending = async () =>
     {
         const { data } = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}&page=${page}`);
 
         console.log(data.results);
-        setContent(data.results);
+        setOutput(data.results);
     };
 
     useEffect(() => {
-        fetchTrending();
+        getTrending();
 
     }, [page]);
 

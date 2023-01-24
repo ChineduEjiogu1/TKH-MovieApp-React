@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Box } from "@mui/material"; 
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
@@ -11,25 +10,24 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function SimpleBottomNavigation() {
-  const [value, setValue] = React.useState(0);
+  const [page, setPage] = React.useState(0);
   const navigate = useNavigate();
 
 
   useEffect(() => {
-    if(value === 0 ) navigate("/");
-    else if (value === 1) navigate("/movies");
-    else if (value === 2) navigate("/series");
-    else if (value === 3) navigate("/search");
-  }, [value]);
+    if(page === 0 ) navigate("/");
+    else if (page === 1) navigate("/movies");
+    else if (page === 2) navigate("/series");
+    else if (page === 3) navigate("/search");
+  }, [page]);
 
   return (
-    // <Box sx={{ width: "100%"}}>
       <BottomNavigation
-        style={{backgroundColor: "#2d313a" , position: "fixed", bottom: 0, zIndex: 100, width: "100%"}}
+        style={{backgroundColor: "#282c34" , position: "fixed", bottom: 0, zIndex: 100, width: "100%"}}
         showLabels
-        value={value}
+        page={page}
         onChange={(event, newValue) => {
-          setValue(newValue);
+          setPage(newValue);
         }}
       >
         <BottomNavigationAction
@@ -57,6 +55,5 @@ export default function SimpleBottomNavigation() {
         />
 
       </BottomNavigation>
-    // </Box>
   );
 }

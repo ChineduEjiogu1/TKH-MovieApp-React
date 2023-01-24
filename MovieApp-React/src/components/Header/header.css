@@ -5,12 +5,12 @@
     display: flex;
     justify-content: center;
     text-transform: uppercase;
-    background-color: #39445a;
+    background-color: #680a00;
     font-family: "Montserrat", sans-serif;
     font-size: 31.65px;
     padding-bottom: 15px;
     box-shadow: 0px 1px 5px black;
-    color: white;
+    color: black;
     z-index: 100;
     text-align: center;
 }
